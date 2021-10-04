@@ -1,6 +1,5 @@
 import os, shutil
 
-
 files = os.listdir('.')
 
 # print(files)
@@ -43,5 +42,44 @@ def move_files(files, path):
             print("No se pudo mover: ", str(f) + " porque: " + str(e))
     
 
-manage_files(files, "TORRENT")
+def manage_folder():
+    for folder in files:
+        filename, extension = os.path.splitext(folder)
+        if not extension:
+            print(filename)
+
+def list_extensions():
+    for f in files:
+        extension = os.path.splitext(f)[1]
+        if(extension):
+            print(extension[1:])
+            #print(extension)
+
+def count_files():
+    count = 0
+    for f in files:
+        filename, extension = os.path.splitext(f)
+        if(filename and extension) and f != "files.py":
+            print(f)
+            count +=1
+    return count
+
+#manage_files(files, "TORRENT")
+#list_extensions()
+
+def main():
+    print("Managing your files...")
+    n_files = count_files()
+    print(n_files, " files finds to manage")
+    print("first.. making ", n_files," folders")
+    
+    
+
+if __name__ == "__main__":
+    main()
+
+#manage_folder()
+
+
+
 
